@@ -43,16 +43,26 @@ header{
     width: 100%;
     z-index: 200;
 }
+header.shadow{
+    background: var(--bg-color);
+    box-shadow: 0 1px 4px hsl(0 4% 14% /10%);
+    transition: 3s;
+}
+header.shadow .logo{
+ color: var(--text-color);
+}
+
 .nav{
     display: flex;
     align-items: center;
-    justify-content:space-between;
+   
     padding: 18px 0;
 }
 .logo {
-    font-size: 1.5rem;
+    font-size: 2rem;
     font-weight: 600;
     color: var(--bg-color);
+    margin-right: 70%;
 }
 .logo span{
     color: var(--second-color);
@@ -62,6 +72,7 @@ header{
     text-transform: uppercase;
     font-weight: 500;
     border-radius: 4px;
+    margin-right: 3%;
     background: var(--second-color);
     color: var(--bg-color);
 }
@@ -172,4 +183,33 @@ header{
     object-fit: cover;
     object-position: center;
     border: 2px solid var(--second-color);
+}
+
+.profile-name{
+    font-size: 0.82rem;
+    font-weight: 500;
+}
+.footer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 0;
+}
+.footer p{
+    font-size: 0.938rem;
+}
+.social{
+    display: flex;
+    align-items: center;
+    column-gap: 1rem;
+}
+.social .bx{
+ font-size: 1.4rem;   
+color: var(--text-color)
+}
+
+
+.social .bx:hover{
+    color: var(--second-color) ;
+    transition: 0.3s all linear;
 }
