@@ -1,23 +1,5 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Post Details</title>
-    <link href="{% static 'css/style.css' %}" rel="stylesheet">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-</head>
-<body>
-<header>
-    <div class="nav container">
-        <a href="{%url 'blogs'%}" class="logo">Be<span>li</span></a>
-    <a href="#" class="login">Login</a> 
-
-    <a href="#" class="login">Register</a>
-</div>
-</header>
+{% extends 'base.html' %}
+{% block content %}
       <form action="{% url 'login'%}" class="login-form" method="POST">
         {% csrf_token %}
         <h1>Login</h1>
@@ -34,18 +16,8 @@
         <input type="submit" class="logbtn" value="Login">
 
         <div class="bottom-text">
-          Don't have account? <a href="#">Sign up</a>
+          Don't have account? <a href="{% url 'register'%}">Sign up</a>
         </div>
 
-      </form>
-
-
-
-
-<script
-  src="https://code.jquery.com/jquery-3.6.3.js"
-  integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
-  crossorigin="anonymous"></script>
-    <script src="{% static 'js/main.js' %}"></script>
-</body>
-</html>
+      </form>   
+{% endblock content %}
