@@ -36,3 +36,27 @@ def logout(request):
     messages.success(request,"You are Logged out")
     return redirect('login')
 
+def register(request):
+    if request.method == 'POST':
+            first_name=request.POST['first_name']
+            last_name=request.POST['last_name']
+            email=request.POST['email']
+            password=request.POST['password']
+            username=email.split('@')[0]
+            user=Account.objects.create_user(first_name=first_name,last_name=last_name,email=email,username=username,password=password)
+            user.is_active=True
+            user.save()
+           # current_site=get_current_site(request)
+           # mail_subject="Please Active Your account"
+           # message=render_to_string('verification_email.html',{
+           #     'user':user,
+            #    'domain':current_site,
+            #    'uid':urlsafe_base64_encode(force_bytes(user.pk)),
+            #    'token':default_token_generator.make_token(user),
+          #  })
+           # to_email=email 
+           # send_email=EmailMessage(mail_subject,message,to=[to_email])
+           # send_email.send()
+           # messages.success(request,'Registeration Successful , Please Verify Your Account')
+            return redirect('login')
+    return render(request,'register.html')
