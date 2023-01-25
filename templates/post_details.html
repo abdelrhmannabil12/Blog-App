@@ -22,19 +22,19 @@
 <div class="header-content post-container">
 
 <a href="index.html" class="back-home">Back To Home</a>
-<h1 class="header-title">
-    Title
+<h1 class="header-title" style="background-color: rgb(36, 36, 36);">
+    {{blog.title}}
 </h1>
-<img src="#" alt="" class="header-img">
+<img src="{{blog.img.url}}" alt="" class="header-img">
 </div>
 
 
 
 <section class="post-content post-container">
    <h2 class="sub-heading">
-    title
+    {{blog.title}}
    </h2>
-   <p class="post-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae pariatur necessitatibus non cupiditate totam ut tempora saepe dicta sit doloribus, incidunt aspernatur velit similique soluta facilis minima itaque quaerat accusantium.</p>
+   <p class="post-text">{{blog.description}}</p>
 
 </section>
 

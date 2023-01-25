@@ -35,49 +35,22 @@
 </div>
 
 <section class="post container">
+    {% for blog in blogs %}
     <div class="post-box">
-        <img src="#" alt="" class="post-img">
-        <h2 class="category">Mobile</h2>
-        <a href="#" class="post-title">How Create Best UX</a>
-        <span class="post-date">22 jun 2023</span>
-        <p class="post-description">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus quibusdam consectetur iusto veritatis ex nobis magnam suscipit omnis hic, esse aliquam voluptas nostrum eveniet neque modi nulla dicta tempora autem.</p>
+        <img src="{{blog.img.url}}" alt="" class="post-img">
+        <h2 class="category">Category</h2>
+        <a href="{{blog.get_url}}" class="post-title">{{blog.title}}</a>
+        <span class="post-date">{{blog.created_on}}</span>
+        <p class="post-description">{{blog.description}}</p>
         <div class="profile">
-            <img src="#" alt="" class="profile-img">
-            <span class="profile-name">Adbelrhman Nabil</span>
+            <img src="{{blog.user.profile_picture.url}}" alt="" class="profile-img">
+            <span class="profile-name">{{blog.user.username}}</span>
         </div>
     </div>
-    <div class="post-box">
-        <img src="#" alt="" class="post-img">
-        <h2 class="category">Mobile</h2>
-        <a href="#" class="post-title">How Create Best UX</a>
-        <span class="post-date">22 jun 2023</span>
-        <p class="post-description">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus quibusdam consectetur iusto veritatis ex nobis magnam suscipit omnis hic, esse aliquam voluptas nostrum eveniet neque modi nulla dicta tempora autem.</p>
-        <div class="profile">
-            <img src="#" alt="" class="profile-img">
-            <span class="profile-name">Adbelrhman Nabil</span>
-        </div>
-    </div>    <div class="post-box">
-        <img src="#" alt="" class="post-img">
-        <h2 class="category">Mobile</h2>
-        <a href="#" class="post-title">How Create Best UX</a>
-        <span class="post-date">22 jun 2023</span>
-        <p class="post-description">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus quibusdam consectetur iusto veritatis ex nobis magnam suscipit omnis hic, esse aliquam voluptas nostrum eveniet neque modi nulla dicta tempora autem.</p>
-        <div class="profile">
-            <img src="#" alt="" class="profile-img">
-            <span class="profile-name">Adbelrhman Nabil</span>
-        </div>
-    </div>    <div class="post-box">
-        <img src="#" alt="" class="post-img">
-        <h2 class="category">Mobile</h2>
-        <a href="#" class="post-title">How Create Best UX</a>
-        <span class="post-date">22 jun 2023</span>
-        <p class="post-description">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus quibusdam consectetur iusto veritatis ex nobis magnam suscipit omnis hic, esse aliquam voluptas nostrum eveniet neque modi nulla dicta tempora autem.</p>
-        <div class="profile">
-            <img src="#" alt="" class="profile-img">
-            <span class="profile-name">Adbelrhman Nabil</span>
-        </div>
-    </div>
+    {%endfor%}
+   
 </section>
+
 <div class="footer container">
     <p>&#169; Blei Blogging </p>
     <div class="social">
