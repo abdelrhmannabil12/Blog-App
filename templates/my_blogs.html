@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<section class="home" id="home">
+    <div class="home-text container">
+        <h2 class="home-title">{{user.username}}</h2>
+        <span class="home-subtitle">{{user.email}}</span>
+    </div>
+</section>
+
+
+<div class="post-filter container">
+    <span class="filter-item active-filter" data-filter="all">All</span>
+    <span class="filter-item" data-filter="design">Design</span>
+    <span class="filter-item" data-filter="tech">Tech</span>
+    <span class="filter-item" data-filter="mobile">Mobile</span>
+    
+</div>
+
+<section class="post container">
+    {% for blog in blogs %}
+    <div class="post-box">
+        <img src="{{blog.img.url}}" alt="" class="post-img">
+        <h2 class="category">Category</h2>
+        <a href="{{blog.get_url}}" class="post-title">{{blog.title}}</a>
+        <span class="post-date">{{blog.created_on}}</span>
+        <p class="post-description">{{blog.description}}</p>
+        <div class="profile">
+            <img src="{{blog.user.profile_picture.url}}" alt="" class="profile-img">
+            <span class="profile-name">{{blog.user.username}}</span>
+        </div>
+    </div>
+    {%endfor%}
+   
+</section>
+{% endblock %}
