@@ -6,7 +6,7 @@ import datetime
 from django.contrib.auth.decorators import login_required
 from .forms import *
 # Create your views here.
-def index(request, category_slug=None):
+def blogs(request, category_slug=None):
     categories = None
     blogs = None
     if category_slug != None:
@@ -28,16 +28,41 @@ def index(request, category_slug=None):
         'blog_count': blog_count,
         'categories':all_categories,
     }
-    return render(request,'index.html', context)
+    return render(request,'blogs.html', context)
 
 def blog_detalis(request,id):
     blog=Blog.objects.get(id=id)
     return render(request,"post_details.html",{'blog':blog})
 
-def user_blogs(request):
-    user=Account.objects.get(id=request.user.id)
-    user_blogs=Blog.objects.filter(user=request.user)
-    return render(request,"my_blogs.html",{'user':user,"blogs":user_blogs})
+def user_blogs(request, category_slug=None):
+    categories = None
+    if category_slug != None:
+        categories = get_object_or_404(Category, slug=category_slug)
+        user=Account.objects.get(id=request.user.id)
+        user_blogs=Blog.objects.filter(user=request.user,category=categories)
+        paginator = Paginator(user_blogs, 10)
+        page = request.GET.get('page')
+        paged_blogs = paginator.get_page(page)
+        blog_count = user_blogs.count()
+    else:
+        user=Account.objects.get(id=request.user.id)
+        user_blogs=Blog.objects.filter(user=request.user)
+        paginator = Paginator(user_blogs, 10)
+        page = request.GET.get('page')
+        paged_blogs = paginator.get_page(page)
+        blog_count = user_blogs.count()
+    
+        
+
+
+    all_categories=Category.objects.all()
+    context = {
+        'user':user,
+        'blogs': paged_blogs,
+        'blog_count': blog_count,
+        'categories':all_categories,
+    }
+    return render(request,"my_blogs.html",context)
 
 @login_required(login_url='login')
 def create_blog(request):
