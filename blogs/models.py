@@ -13,6 +13,8 @@ class Category(models.Model):
 
     def get_url(self):
             return reverse('blogs_by_category', args=[self.slug])
+    def my_url(self):
+            return reverse('my_blogs_by_category', args=[self.slug])
     
 
     def __str__(self):
@@ -30,6 +32,5 @@ class Blog(models.Model):
         return reverse('blog_details', kwargs={"id":self.id})
     def edit_blog_url(self):
         return reverse('edit_blog', kwargs={"id":self.id})    
-    
     def delete_url(self):
         return reverse('delete_blog',kwargs={"id":self.id})
