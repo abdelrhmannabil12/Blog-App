@@ -71,3 +71,7 @@ def edit_blog(request,id):
     return render(request,'edit_blog.html',{'blog':blog,'categories':categories,'form':blog_form})
 
 
+def delete_blog(request,id):
+    blog=Blog.objects.get(id=id)
+    blog.delete()
+    return redirect('my_blogs')

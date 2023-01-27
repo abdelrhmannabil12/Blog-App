@@ -7,6 +7,6 @@ urlpatterns = [
     path('category/<slug:category_slug>/', views.index, name='blogs_by_category'),
     path('create_blog/',views.create_blog,name='create_blog'),
     path('my_blogs/edit_blog/<int:id>',views.edit_blog,name='edit_blog'),
-
+    path('my_blogs/delete_blog/<int:id>',views.delete_blog,name='delete_blog'),
     
 ]   
