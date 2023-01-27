@@ -58,3 +58,16 @@ def create_blog(request):
     return render(request,"create_blog.html",{'categories':categories,'form':blog_form})
     
 
+def edit_blog(request,id):
+    blog=get_object_or_404(Blog,id=id)
+    if request.method == 'POST':
+        blog_form=BlogForm(request.POST,request.FILES,instance=blog)
+        if blog_form.is_valid():
+            blog_form.save()
+            return redirect('my_blogs')
+    else:
+        blog_form=BlogForm()
+    categories=Category.objects.all()
+    return render(request,'edit_blog.html',{'blog':blog,'categories':categories,'form':blog_form})
+
+
